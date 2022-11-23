@@ -26,10 +26,7 @@ public class AccountController {
   @GetMapping(value = "/{accountNumber}/balances", produces = "application/json")
   public ResponseDto<AccountBalanceDto> getAccountBalances(@PathVariable String accountNumber) throws AccountManagerException {
     var account = accountService.getAccountByAccountNumber(accountNumber);
-    var response = AccountBalanceDto.builder()
-        .accountNumber(account.getAccountNumber())
-        .balance(account.getBalance())
-        .build();
+    var response = AccountBalanceDto.fromAccount(account);
     return ResponseDto.response(response);
   }
 

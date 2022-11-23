@@ -2,6 +2,7 @@ package com.acmebank.account.manager.service;
 
 
 import com.acmebank.account.manager.AbstractTests;
+import com.acmebank.account.manager.entity.enums.Currency;
 import com.acmebank.account.manager.enums.ErrorCode;
 import com.acmebank.account.manager.exception.AccountManagerException;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,7 @@ class AccountServiceTests extends AbstractTests {
 
     assertNotNull(account);
     assertEquals(account.getAccountNumber(), validBankAccount);
+    assertEquals(account.getCurrency(), Currency.HKD);
     assertEquals(account.getBalance(), new BigDecimal("1000.00"));
   }
 
