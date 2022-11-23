@@ -1,9 +1,9 @@
 package com.acmebank.account.manager.service.impl;
 
-import com.acmebank.account.manager.constant.ErrorCode;
+import com.acmebank.account.manager.enums.ErrorCode;
 import com.acmebank.account.manager.entity.AccountTransaction;
-import com.acmebank.account.manager.entity.constant.TransactionStatus;
-import com.acmebank.account.manager.entity.constant.TransactionType;
+import com.acmebank.account.manager.entity.enums.TransactionStatus;
+import com.acmebank.account.manager.entity.enums.TransactionType;
 import com.acmebank.account.manager.exception.AccountManagerException;
 import com.acmebank.account.manager.respository.AccountRepository;
 import com.acmebank.account.manager.respository.AccountTransactionRepository;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Service
 public class AccountTransactionServiceImpl implements AccountTransactionService {
@@ -53,6 +54,7 @@ public class AccountTransactionServiceImpl implements AccountTransactionService 
     var accountTransaction = new AccountTransaction();
     accountTransaction.setFromAccount(fromAccount);
     accountTransaction.setToAccount(toAccount);
+    accountTransaction.setTransactionNumber(UUID.randomUUID());
     accountTransaction.setTransactionType(TransactionType.TRANSFER);
     accountTransaction.setTransactionStatus(TransactionStatus.COMPLETED);
     accountTransaction.setCurrency(request.getCurrency());

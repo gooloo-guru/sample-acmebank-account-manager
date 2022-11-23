@@ -1,7 +1,7 @@
 package com.acmebank.account.manager.controller;
 
 
-import com.acmebank.account.manager.constant.ErrorCode;
+import com.acmebank.account.manager.enums.ErrorCode;
 import com.acmebank.account.manager.dto.ErrorDto;
 import com.acmebank.account.manager.dto.ErrorResponseDto;
 import com.acmebank.account.manager.exception.AccountManagerException;

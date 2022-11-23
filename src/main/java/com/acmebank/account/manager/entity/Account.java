@@ -1,7 +1,7 @@
 package com.acmebank.account.manager.entity;
 
-import com.acmebank.account.manager.entity.constant.AccountType;
-import com.acmebank.account.manager.entity.constant.Currency;
+import com.acmebank.account.manager.entity.enums.AccountType;
+import com.acmebank.account.manager.entity.enums.Currency;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

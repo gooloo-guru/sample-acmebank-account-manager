@@ -1,6 +1,6 @@
 package com.acmebank.account.manager.exception;
 
-import com.acmebank.account.manager.constant.ErrorCode;
+import com.acmebank.account.manager.enums.ErrorCode;
 import lombok.Getter;
 
 @Getter

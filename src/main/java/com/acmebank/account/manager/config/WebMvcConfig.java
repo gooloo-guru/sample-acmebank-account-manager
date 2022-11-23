@@ -1,4 +1,4 @@
-package com.acmebank.account.manager.configuration;
+package com.acmebank.account.manager.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

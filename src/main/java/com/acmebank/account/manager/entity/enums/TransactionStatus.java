@@ -1,4 +1,4 @@
-package com.acmebank.account.manager.entity.constant;
+package com.acmebank.account.manager.entity.enums;
 
 public enum TransactionStatus {
   COMPLETED,

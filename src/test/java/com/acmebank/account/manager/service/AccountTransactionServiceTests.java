@@ -1,10 +1,10 @@
 package com.acmebank.account.manager.service;
 
 import com.acmebank.account.manager.AbstractTests;
-import com.acmebank.account.manager.constant.ErrorCode;
-import com.acmebank.account.manager.entity.constant.Currency;
-import com.acmebank.account.manager.entity.constant.TransactionStatus;
-import com.acmebank.account.manager.entity.constant.TransactionType;
+import com.acmebank.account.manager.enums.ErrorCode;
+import com.acmebank.account.manager.entity.enums.Currency;
+import com.acmebank.account.manager.entity.enums.TransactionStatus;
+import com.acmebank.account.manager.entity.enums.TransactionType;
 import com.acmebank.account.manager.exception.AccountManagerException;
 import com.acmebank.account.manager.service.request.TransferTransactionRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 public class AccountTransactionServiceTests extends AbstractTests {
 
+  @Autowired
+  private AccountService accountService;
   @Autowired
   private AccountTransactionService accountTransactionService;
 
@@ -114,6 +117,9 @@ public class AccountTransactionServiceTests extends AbstractTests {
 
   @Test
   public void Should_TransferSuccess_ForValidAccountTransaction() throws AccountManagerException {
+    var originalToAccountBalance = accountService.getAccountByAccountNumber("88888888");
+    var originalFromAccountBalance = accountService.getAccountByAccountNumber("12345678");
+
     var request = TransferTransactionRequest.builder()
         .toAccountNumber("88888888")
         .fromAccountNumber("12345678")
@@ -122,13 +128,18 @@ public class AccountTransactionServiceTests extends AbstractTests {
     request.setCurrency(Currency.HKD);
 
     var accountTransaction = accountTransactionService.transfer(request);
+    var newToAccountBalance = accountService.getAccountByAccountNumber("88888888");
+    var newFromAccountBalance = accountService.getAccountByAccountNumber("12345678");
 
     assertNotNull(accountTransaction);
+    assertNotNull(accountTransaction.getTransactionNumber());
     assertEquals(accountTransaction.getFromAccount().getAccountNumber(), "12345678");
     assertEquals(accountTransaction.getToAccount().getAccountNumber(), "88888888");
     assertEquals(accountTransaction.getAmount(), BigDecimal.TEN);
     assertEquals(accountTransaction.getCurrency(), Currency.HKD);
     assertEquals(accountTransaction.getTransactionType(), TransactionType.TRANSFER);
     assertEquals(accountTransaction.getTransactionStatus(), TransactionStatus.COMPLETED);
+    assertEquals(newFromAccountBalance.getBalance(), originalFromAccountBalance.getBalance().subtract(BigDecimal.TEN));
+    assertEquals(newToAccountBalance.getBalance(), originalToAccountBalance.getBalance().add(BigDecimal.TEN));
   }
 }

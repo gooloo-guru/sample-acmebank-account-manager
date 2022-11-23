@@ -15,6 +15,7 @@ CREATE TABLE account_transaction
     account_transaction_id BIGINT                   NOT NULL AUTO_INCREMENT,
     from_account_id        BIGINT NULL,
     to_account_id          BIGINT NULL,
+    transaction_number     UUID                     NOT NULL,
     transaction_type       INT                      NOT NULL,
     transaction_status     INT                      NOT NULL,
     currency               CHAR(3)                  NOT NULL,

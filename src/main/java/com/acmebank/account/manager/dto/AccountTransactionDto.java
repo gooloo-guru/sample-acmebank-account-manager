@@ -1,9 +1,9 @@
 package com.acmebank.account.manager.dto;
 
 import com.acmebank.account.manager.entity.AccountTransaction;
-import com.acmebank.account.manager.entity.constant.Currency;
-import com.acmebank.account.manager.entity.constant.TransactionStatus;
-import com.acmebank.account.manager.entity.constant.TransactionType;
+import com.acmebank.account.manager.entity.enums.Currency;
+import com.acmebank.account.manager.entity.enums.TransactionStatus;
+import com.acmebank.account.manager.entity.enums.TransactionType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +15,7 @@ import java.time.ZonedDateTime;
 public class AccountTransactionDto {
   private String fromAccountNumber;
   private String toAccountNumber;
+  private String transactionNumber;
   private TransactionType transactionType;
   private TransactionStatus transactionStatus;
   private Currency currency;
@@ -25,6 +26,7 @@ public class AccountTransactionDto {
     return AccountTransactionDto.builder()
         .fromAccountNumber(accountTransaction.getFromAccount().getAccountNumber())
         .toAccountNumber(accountTransaction.getToAccount().getAccountNumber())
+        .transactionNumber(accountTransaction.getTransactionNumber().toString())
         .transactionType(accountTransaction.getTransactionType())
         .transactionStatus(accountTransaction.getTransactionStatus())
         .currency(accountTransaction.getCurrency())

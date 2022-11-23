@@ -1,8 +1,8 @@
 package com.acmebank.account.manager.entity;
 
-import com.acmebank.account.manager.entity.constant.Currency;
-import com.acmebank.account.manager.entity.constant.TransactionStatus;
-import com.acmebank.account.manager.entity.constant.TransactionType;
+import com.acmebank.account.manager.entity.enums.Currency;
+import com.acmebank.account.manager.entity.enums.TransactionStatus;
+import com.acmebank.account.manager.entity.enums.TransactionType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +11,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -34,6 +35,9 @@ public class AccountTransaction implements Serializable {
   @ManyToOne
   @JoinColumn(name = "to_account_id")
   private Account toAccount;
+
+  @Column(name = "transaction_number", nullable = false)
+  private UUID transactionNumber;
 
   @Enumerated(EnumType.ORDINAL)
   @Column(name = "transaction_type", nullable = false)

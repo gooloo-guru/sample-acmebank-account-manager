@@ -1,6 +1,6 @@
 package com.acmebank.account.manager.dto;
 
-import com.acmebank.account.manager.entity.constant.Currency;
+import com.acmebank.account.manager.entity.enums.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

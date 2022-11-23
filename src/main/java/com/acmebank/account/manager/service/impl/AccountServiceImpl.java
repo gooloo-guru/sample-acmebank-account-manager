@@ -1,6 +1,6 @@
 package com.acmebank.account.manager.service.impl;
 
-import com.acmebank.account.manager.constant.ErrorCode;
+import com.acmebank.account.manager.enums.ErrorCode;
 import com.acmebank.account.manager.entity.Account;
 import com.acmebank.account.manager.exception.AccountManagerException;
 import com.acmebank.account.manager.respository.AccountRepository;

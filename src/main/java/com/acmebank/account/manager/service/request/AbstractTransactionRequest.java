@@ -1,6 +1,6 @@
 package com.acmebank.account.manager.service.request;
 
-import com.acmebank.account.manager.entity.constant.Currency;
+import com.acmebank.account.manager.entity.enums.Currency;
 import lombok.Getter;
 import lombok.Setter;
 

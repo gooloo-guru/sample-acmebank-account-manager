@@ -1,4 +1,4 @@
-package com.acmebank.account.manager.constant;
+package com.acmebank.account.manager.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
